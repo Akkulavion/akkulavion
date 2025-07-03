@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie & TV Show Player</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about.html">About Me</a></li>
+            <li><a href="tutorial.html">Tutorial</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Cari Film & Acara TV 🎬</h1>
+        <div class="input-container">
+            <input type="text" id="searchInput" placeholder="Ketik judul film atau serial TV...">
+            <button id="searchButton">Cari</button>
+        </div>
+    </header>
+
+    <main>
+        <div id="video-player-container">
+            </div>
+
+        <div id="search-results-container">
+            <h2>Hasil Pencarian</h2>
+            <div id="search-results">
+                <p class="placeholder-text">Cari sesuatu untuk memulai.</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+
+    <div id="welcomeModal" class="modal-overlay">
+    <div class="modal-content">
+        <h2>Selamat Datang! 👋</h2>
+        <p>Untuk pengalaman menonton terbaik tanpa iklan, kami sarankan untuk melihat halaman tutorial terlebih dahulu. Apakah Anda ingin melihatnya sekarang?</p>
+        <div class="modal-buttons">
+            <button id="tutorialYesBtn">Ya, Bawa Saya ke Tutorial</button>
+            <button id="tutorialNoBtn">Tidak, Terima Kasih</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('welcomeModal');
+        const yesBtn = document.getElementById('tutorialYesBtn');
+        const noBtn = document.getElementById('tutorialNoBtn');
+
+        // Periksa apakah pengguna sudah melihat modal di sesi ini
+        if (!sessionStorage.getItem('hasSeenWelcomeModal')) {
+            // Jika belum, tampilkan modal
+            modal.style.display = 'flex';
+        }
+
+        // Jika tombol 'Ya' diklik
+        yesBtn.addEventListener('click', () => {
+            sessionStorage.setItem('hasSeenWelcomeModal', 'true');
+            window.location.href = 'tutorial.html'; // Arahkan ke halaman tutorial
+        });
+
+        // Jika tombol 'Tidak' diklik
+        noBtn.addEventListener('click', () => {
+            sessionStorage.setItem('hasSeenWelcomeModal', 'true');
+            modal.style.display = 'none'; // Sembunyikan modal
+        });
+    });
+</script>
+
+</body>
+</html>

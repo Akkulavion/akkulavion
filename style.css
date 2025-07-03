@@ -1,0 +1,423 @@
+/* --- 1. Import Font & Pengaturan Dasar (TEMA MERAH-HITAM) --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+:root {
+    --bg-black: #0D0D0D;
+    --surface-grey: #1A1A1A;
+    --border-grey: #2C2C2C;
+    --accent-red: #E50914; /* Warna merah khas Netflix */
+    --accent-red-hover: #B20710;
+    --text-white: #FFFFFF;
+    --text-grey: #AAAAAA;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background-color: var(--bg-black);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3e%3ctext x='10' y='25' font-size='20' fill='%231F1F1F'%3e%e2%99%a0%3c/text%3e%3ctext x='60' y='45' font-size='20' fill='%231F1F1F'%3e%e2%99%a5%3c/text%3e%3ctext x='20' y='80' font-size='20' fill='%231F1F1F'%3e%e2%99%a6%3c/text%3e%3ctext x='75' y='85' font-size='20' fill='%231F1F1F'%3e%e2%99%a3%3c/text%3e%3c/svg%3e");
+    color: var(--text-white);
+}
+
+main {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* --- 2. Navigasi --- */
+nav {
+    background-color: var(--surface-grey);
+    padding: 0 20px;
+    border-bottom: 1px solid var(--border-grey);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav a {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: var(--text-grey);
+    font-weight: 500;
+    transition: color 0.3s, border-bottom-color 0.3s;
+    border-bottom: 3px solid transparent;
+}
+
+nav a:hover {
+    color: var(--text-white);
+}
+
+nav a.active {
+    color: var(--text-white);
+    border-bottom-color: var(--accent-red);
+}
+
+/* --- 3. Header & Form Pencarian --- */
+header {
+    text-align: center;
+    padding-top: 40px;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.input-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#searchInput {
+    width: 60%;
+    max-width: 500px;
+    padding: 15px 20px;
+    font-size: 1em;
+    border: 1px solid var(--border-grey);
+    border-radius: 50px 0 0 50px;
+    background-color: var(--surface-grey);
+    color: var(--text-white);
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#searchInput:focus {
+    border-color: var(--accent-red);
+}
+
+#searchButton {
+    padding: 15px 30px;
+    font-size: 1em;
+    font-weight: 500;
+    border: none;
+    border-radius: 0 50px 50px 0;
+    background-color: var(--accent-red);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#searchButton:hover {
+    background-color: var(--accent-red-hover);
+}
+
+/* --- 4. Halaman Home (Player & Hasil Pencarian) --- */
+#video-player-container h2 {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#search-results-container h2 {
+    margin-top: 40px;
+    border-bottom: 1px solid var(--border-grey);
+    padding-bottom: 15px;
+}
+
+#search-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+}
+
+.placeholder-text {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--text-grey);
+    font-size: 1.2em;
+    padding: 40px 0;
+}
+
+.result-card {
+    background-color: var(--surface-grey);
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    border: 1px solid var(--border-grey);
+}
+
+.result-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+.result-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.result-card .card-info {
+    padding: 15px;
+}
+
+.result-card h3 {
+    margin: 0 0 5px 0;
+    font-size: 1em;
+    color: var(--text-white);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.result-card span {
+    font-size: 0.8em;
+    color: var(--accent-red);
+    font-weight: 500;
+}
+
+/* --- 5. Halaman About Me --- */
+.about-page {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--accent-red);
+    margin-bottom: 20px;
+}
+
+.about-page h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.about-page p {
+    max-width: 600px;
+    margin: 0 auto;
+    color: var(--text-grey);
+    line-height: 1.8;
+}
+
+/* --- 6. Halaman Tutorial --- */
+.tutorial-page {
+    text-align: center;
+    max-width: 960px;
+    margin: 40px auto;
+}
+
+.tutorial-page h1 {
+    margin-bottom: 15px;
+}
+
+.tutorial-page .intro {
+    font-size: 1.1em;
+    color: var(--text-grey);
+    margin-bottom: 40px;
+}
+
+.extension-list {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.extension-item {
+    background-color: var(--surface-grey);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid var(--border-grey);
+    flex: 1;
+    min-width: 300px;
+}
+
+.extension-item h2 {
+    margin-top: 0;
+    color: var(--text-white);
+}
+
+.extension-item p {
+    color: var(--text-grey);
+    min-height: 60px;
+}
+
+.extension-item .button {
+    display: inline-block;
+    background-color: var(--accent-red);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    margin: 5px;
+}
+
+.extension-item .button:hover {
+    background-color: var(--accent-red-hover);
+}
+
+.separator {
+    border: none;
+    height: 1px;
+    background-color: var(--border-grey);
+    margin: 40px 0;
+}
+
+.video-tutorials-grid {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.video-section {
+    flex: 1;
+    min-width: 300px;
+}
+
+.video-section h3 {
+    color: var(--text-white);
+}
+
+.video-section p {
+    color: var(--text-grey);
+    font-size: 0.9em;
+}
+
+/* --- 7. KELAS REUSABLE UNTUK VIDEO RESPONSIF --- */
+.responsive-iframe-container,
+.tutorial-video-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    background-color: #000;
+    border-radius: 12px;
+}
+
+.responsive-iframe-container iframe,
+.tutorial-video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* --- 8. ATURAN RESPONSIVE UNTUK MOBILE --- */
+@media (max-width: 768px) {
+    .video-tutorials-grid {
+        flex-direction: column;
+    }
+
+    #searchInput {
+        width: 100%;
+    }
+
+    .input-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #searchInput, #searchButton {
+        border-radius: 50px;
+    }
+}
+
+/* --- 9. MODAL SAMBUTAN (KODE BARU) --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none; /* Disembunyikan secara default */
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: var(--surface-grey);
+    padding: 30px 40px;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 500px;
+    border: 1px solid var(--border-grey);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: var(--text-white);
+}
+
+.modal-content p {
+    color: var(--text-grey);
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.modal-buttons button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#tutorialYesBtn {
+    background-color: var(--accent-red);
+    color: white;
+}
+#tutorialYesBtn:hover {
+    background-color: var(--accent-red-hover);
+    transform: translateY(-2px);
+}
+
+#tutorialNoBtn {
+    background-color: var(--border-grey);
+    color: var(--text-grey);
+}
+#tutorialNoBtn:hover {
+    background-color: #444;
+    color: var(--text-white);
+}
+
+/* Animasi untuk modal */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
